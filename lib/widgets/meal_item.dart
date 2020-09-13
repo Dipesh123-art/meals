@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../screens/meal_detail_screen.dart';
 import '../models/meal.dart';
 
@@ -44,7 +45,7 @@ class MealItem extends StatelessWidget {
         return 'Pricey';
         break;
       case Affordability.Luxurious:
-        return 'Luxurious';
+        return 'Expensive';
         break;
       default:
         return 'Unknown';
@@ -52,7 +53,10 @@ class MealItem extends StatelessWidget {
   }
 
   void selectMeal(BuildContext context) {
-    Navigator.of(context).pushNamed(MealDetailScreen.routeName, arguments: id);
+    Navigator.of(context).pushNamed(
+      MealDetailScreen.routeName,
+      arguments: id,
+    );
   }
 
   @override
@@ -101,11 +105,11 @@ class MealItem extends StatelessWidget {
                       overflow: TextOverflow.fade,
                     ),
                   ),
-                ),
+                )
               ],
             ),
             Padding(
-              padding: const EdgeInsets.all(20),
+              padding: EdgeInsets.all(20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
@@ -139,7 +143,7 @@ class MealItem extends StatelessWidget {
                       SizedBox(
                         width: 6,
                       ),
-                      Text('$duration min'),
+                      Text(affordabilityText),
                     ],
                   ),
                 ],
